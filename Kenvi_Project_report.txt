@@ -1,0 +1,303 @@
+ PROJECT REPORT
+ AUTOMATED WEB SECURITY SCANNER
+
+Project Domain: Cybersecurity  
+Project Type  : Python-Based Security Assessment Tool  
+Submitted by  : Kenvi  
+Institution   : Silver Oak University
+Program       : IBM SkillsBuild Cyber Security 2026 — BharatCares  
+
+
+ 1. Abstract
+
+The Automated Web Security Scanner is a Python-based cybersecurity project designed to examine basic security configurations of websites. Websites may have security weaknesses when they do not use HTTPS properly or fail to configure important security headers and cookie attributes.
+
+This project uses the Python programming language and the Requests library to send HTTP requests to a target website and examine its response. It checks whether the website uses HTTPS and whether selected security headers are present. It also examines cookie attributes such as Secure, HttpOnly, and SameSite.
+
+The scanner displays its findings in the terminal and saves the scan results in a JSON file named scan_report.json. This makes the results easier to review and use as basic security documentation.
+
+The main purpose of the project is educational. It demonstrates how automated tools can help identify missing or potentially weak website security configurations. However, it is not a complete penetration-testing tool and cannot identify every type of web vulnerability.
+
+2. Introduction
+
+Cybersecurity is the practice of protecting computer systems, networks, applications, and data from unauthorized access, attacks, and misuse. As more services become available online, website security has become an important part of protecting users and organizations.
+
+Websites may expose users to security risks when their connections are not properly protected or when important security configurations are missing. For example, HTTPS helps protect data transmitted between a browser and a web server, while security headers can help browsers apply additional protections against certain types of attacks.
+
+Manually checking these configurations can take time, especially when several websites need to be examined. An automated scanner can make this process easier by performing predefined checks and presenting the results in a structured format.
+
+The Automated Web Security Scanner was developed to demonstrate the basic principles of website security assessment using Python. It provides an introduction to HTTP communication, security headers, cookie protection, automated checking, and report generation.
+
+3. Problem Statement
+
+Website owners and developers need to understand whether their websites use important security configurations. However, beginners may not know how to inspect HTTP responses, identify security headers, or examine cookie attributes.
+
+The problem addressed by this project is the need for a simple, beginner-friendly tool that automates selected website security checks and presents the findings in an understandable way.
+
+The scanner helps address this problem by requesting a website's response, examining selected security settings, and generating a report that can be reviewed later.
+
+4. Objectives of the Project
+
+The main objectives of this project are:
+
+To develop a basic automated website security scanner using Python.
+
+To check whether a website is accessed through HTTPS.
+
+To inspect selected HTTP security headers.
+
+To examine cookie attributes associated with basic browser-side protection.
+
+To identify missing security configurations that may require further investigation.
+
+To display scan results clearly in the terminal.
+
+To save the findings in a JSON report for later review.
+
+To gain practical experience with Python programming and fundamental cybersecurity concepts.
+
+5. Technologies Used
+
+5.1 Python
+
+Python is the main programming language used to develop the scanner. It is suitable for this project because it is readable, beginner-friendly, and supports libraries for web requests and data processing.
+
+5.2 Requests Library
+
+The Requests library allows the program to send HTTP requests to websites and receive their responses. The scanner uses the response information to examine the website's connection and selected security configurations.
+
+5.3 JSON
+
+JSON stands for JavaScript Object Notation. It is a structured data format used to store and exchange information. The project uses JSON to save the scan results in scan_report.json.
+
+5.4 Python Standard Library
+
+The project also uses built-in Python modules for tasks such as processing text, handling URLs, working with dates and times, and writing output files. These modules do not need to be installed separately.
+
+5.5 Development Environment
+
+The project was developed and executed in a Windows environment using Python and Command Prompt. The Python source code is stored in a .py file.
+
+6. Methodology
+
+The scanner follows a sequence of steps to examine a target website.
+
+Step 1: Accept the Target Website
+
+The process begins with a website address supplied to the scanner. The website should be one that the user owns or has permission to assess.
+
+Step 2: Send an HTTP Request
+
+The program uses the Requests library to send a request to the website. The server's response provides information such as the response status, HTTP headers, and any cookies made available through the response.
+
+Step 3: Check HTTPS
+
+The scanner checks whether the target uses HTTPS. HTTPS uses encryption through TLS to help protect information transmitted between the client and server.
+
+If the target is accessed over plain HTTP, the connection may not provide the same transport protection. The scanner's HTTPS check is a basic indicator and does not independently validate every aspect of a website's TLS configuration.
+
+Step 4: Inspect Security Headers
+
+The program examines selected HTTP response headers. These headers provide instructions to browsers about certain security-related behaviors.
+
+The scanner identifies whether the selected headers are present. Missing headers are recorded as findings for further review.
+
+Step 5: Examine Cookie Attributes
+
+Cookies can store session information and other data. Certain attributes help limit how browsers transmit or expose cookies.
+
+The scanner checks relevant cookie attributes, including Secure, HttpOnly, and SameSite, when cookies are available in the response.
+
+Step 6: Display the Findings
+
+After performing the checks, the scanner displays its findings in the terminal. This allows the user to see which configurations were detected and which may need attention.
+
+Step 7: Save the Report
+
+The program saves the scan findings in a JSON file named scan_report.json. This allows the user to inspect the results later without relying only on the terminal output.
+
+7. Features of the Scanner
+
+7.1 HTTPS Check
+
+The scanner checks whether the target URL uses HTTPS. HTTPS is important because it helps protect data transmitted between the website and the client.
+
+7.2 HTTP Security Header Checks
+
+The scanner examines the following headers:
+
+Strict-Transport-Security (HSTS): Instructs supported browsers to use HTTPS for future connections under the header's specified conditions.
+
+Content-Security-Policy (CSP): Defines rules that help control which sources of content a browser is allowed to load.
+
+X-Content-Type-Options: When configured with nosniff, helps prevent browsers from interpreting content as a different MIME type.
+
+X-Frame-Options: Can restrict whether a page may be displayed in a frame, helping reduce certain clickjacking risks.
+
+Referrer-Policy: Controls how much referrer information browsers send in requests.
+
+Permissions-Policy: Allows a website to control the availability of certain browser features and capabilities.
+
+The scanner checks for the presence of these headers. A header being present does not automatically mean that its configuration is correct or sufficiently secure.
+
+7.3 Cookie Security Checks
+
+The scanner examines three important cookie attributes:
+
+Secure: Restricts a cookie to secure HTTPS connections.
+
+HttpOnly: Prevents ordinary JavaScript running in the browser from reading the cookie.
+
+SameSite: Controls when a browser sends a cookie in cross-site contexts and can help reduce certain cross-site request forgery risks.
+
+These attributes serve different purposes. Their absence may indicate a configuration issue, depending on how the cookie is used.
+
+7.4 Terminal Output
+
+The program presents the findings in the terminal so that the user can review the results immediately after a scan.
+
+7.5 JSON Report Generation
+
+The scanner stores its results in scan_report.json. JSON provides a structured format that is easy for people and other programs to process.
+
+7.6 Automated Assessment
+
+The program performs its predefined checks automatically, reducing the need to inspect every selected header and cookie attribute manually.
+
+8. Working of the Program
+
+The program follows a simple workflow:
+
+Target URL → HTTP Request → Response Analysis → Security Checks → Terminal Results → JSON Report
+
+First, the program receives the target website address. It then sends a request and receives the server's response. The response is examined for HTTPS usage, selected security headers, and cookie attributes.
+
+The program records the findings and displays them in the terminal. Finally, it writes the results to scan_report.json.
+
+This process demonstrates how a short Python program can automate repetitive security configuration checks.
+
+9. Results and Output
+
+The scanner is designed to produce two forms of output: terminal results and a JSON report.
+
+9.1 Terminal Results
+
+The terminal displays the findings from the security checks. Depending on the target website, these findings may indicate that certain headers or cookie attributes are present or missing.
+
+A missing header should be treated as a finding for further investigation rather than automatic proof that the website is vulnerable. Some configurations depend on the website's purpose and architecture.
+
+9.2 JSON Report
+
+The file scan_report.json contains the results recorded by the program. It provides a structured record that can be opened in a text editor and used for further analysis.
+
+9.3 Evaluation of the Results
+
+The project demonstrates the ability to send requests to a website, examine selected security-related response information, and store the findings.
+
+The actual findings depend on the website being scanned. Therefore, screenshots and specific observations should be taken from a real run of the program rather than assumed in advance.
+
+Evidence to include: Insert a screenshot of your actual terminal output and, if possible, a screenshot showing the contents of scan_report.json.
+
+Figure 1: Terminal output of the Automated Web Security Scanner.
+
+Figure 2: Generated JSON security scan report.
+
+10. What I Learned
+
+During this project, I learned several important concepts related to Python programming and cybersecurity.
+
+10.1 Python Programming
+
+I gained practical experience in writing and executing a Python program. I learned how a program can use libraries to perform tasks that would otherwise require more manual effort.
+
+10.2 HTTP and HTTPS
+
+I learned that websites communicate with clients using HTTP-based requests and responses. I also learned the importance of HTTPS in protecting information transmitted between a client and a server.
+
+10.3 Website Security Headers
+
+I learned that HTTP response headers can provide important browser security instructions. Different headers address different risks, and their configuration must be considered in context.
+
+10.4 Cookie Security
+
+I learned how Secure, HttpOnly, and SameSite attributes help protect cookies in different ways. These attributes are especially relevant when cookies contain session-related information.
+
+10.5 Automation in Cybersecurity
+
+I learned that repetitive security checks can be automated using a programming language such as Python. Automation makes it easier to perform the same predefined checks consistently.
+
+10.6 Error Handling and Dependencies
+
+I gained experience installing Python dependencies and running a program from the Windows Command Prompt. I also learned that a program must be executed from the correct folder and that its required libraries must be available.
+
+10.7 Report Generation
+
+I learned how scan results can be saved in JSON format. This helped me understand the importance of organizing security findings so that they can be reviewed and documented later.
+
+10.8 Responsible Security Testing
+
+I learned that security scanning should be performed only on websites that I own or am authorized to assess. A basic scanner can support security awareness, but it should not be treated as a substitute for a complete security audit.
+
+11. Limitations of the Project
+
+Although the scanner provides useful introductory security checks, it has several limitations.
+
+Limited checks: It examines only the security settings implemented in the program.
+
+No complete vulnerability detection: It does not identify every possible web application vulnerability.
+
+Header presence is not enough: A security header may be present but incorrectly configured.
+
+Cookie visibility: The scanner can inspect only the cookies available through the response it processes. It may not see cookies created later by JavaScript or through other requests.
+
+Limited TLS assessment: Checking HTTPS usage does not provide a complete analysis of certificate validity, supported TLS versions, or cipher configurations.
+
+Website behavior: Some websites may block automated requests, require authentication, or respond differently to automated clients.
+
+No guarantee of security: A successful scan does not prove that a website is completely secure.
+
+These limitations mean that the scanner should be used as an educational tool for preliminary checks, not as a complete professional security assessment.
+
+12. Future Scope
+
+The project can be improved in several ways:
+
+Add more security configuration checks.
+
+Improve error handling for timeouts, connection failures, and invalid URLs.
+
+Provide clearer severity levels for findings, with explanations of their limitations.
+
+Generate more detailed reports in HTML or PDF format.
+
+Add a graphical user interface to make the tool easier to use.
+
+Improve reporting by distinguishing missing, present, and potentially misconfigured headers.
+
+Add tests to verify that the scanner handles different server responses correctly.
+
+Introduce additional authorized security checks while following responsible testing practices.
+
+These improvements could make the scanner more informative and easier to maintain.
+
+13. Conclusion
+
+The Automated Web Security Scanner demonstrates how Python can be used to automate basic website security configuration checks. It examines HTTPS usage, selected HTTP security headers, and cookie attributes, then displays its findings and saves them in a JSON report.
+
+The project provides practical experience with Python, HTTP requests, website security concepts, automation, and structured output generation. It also highlights the importance of security headers and cookie attributes in helping protect web applications.
+
+Although the scanner has limited functionality and cannot detect every type of vulnerability, it provides a useful starting point for understanding web security assessment. The project has helped me develop my programming skills and improve my understanding of fundamental cybersecurity principles.
+
+In conclusion, this project shows how a simple automated tool can assist in identifying selected website security configuration issues and support further security investigation.
+
+14. References
+
+Python Documentation — https://docs.python.org/3/
+
+Requests Documentation — https://requests.readthedocs.io/
+
+MDN Web Docs — HTTP Headers — https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers
+
+MDN Web Docs — HTTP Cookies — https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Cookies
+
+OWASP — Web Application Security — https://owasp.org/

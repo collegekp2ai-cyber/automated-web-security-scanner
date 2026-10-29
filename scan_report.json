@@ -1,0 +1,43 @@
+{
+    "scan_time": "2026-10-29T19:33:12.106330+05:30",
+    "requested_url": "https://example.com",
+    "final_url": "https://example.com/",
+    "http_status": 200,
+    "https_used": true,
+    "security_headers": {
+        "Strict-Transport-Security": {
+            "status": "MISSING",
+            "value": null,
+            "purpose": "Helps enforce HTTPS connections."
+        },
+        "Content-Security-Policy": {
+            "status": "MISSING",
+            "value": null,
+            "purpose": "Helps control which resources a page can load."
+        },
+        "X-Content-Type-Options": {
+            "status": "MISSING",
+            "value": null,
+            "purpose": "Helps prevent MIME-type sniffing."
+        },
+        "X-Frame-Options": {
+            "status": "MISSING",
+            "value": null,
+            "purpose": "Helps reduce clickjacking risks."
+        },
+        "Referrer-Policy": {
+            "status": "MISSING",
+            "value": null,
+            "purpose": "Controls referrer information sent by browsers."
+        },
+        "Permissions-Policy": {
+            "status": "MISSING",
+            "value": null,
+            "purpose": "Controls access to browser features."
+        }
+    },
+    "cookies": [],
+    "notes": [
+        "This is a basic educational configuration check, not a complete security audit."
+    ]
+}
